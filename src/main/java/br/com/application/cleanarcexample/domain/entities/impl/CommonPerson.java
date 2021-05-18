@@ -100,7 +100,10 @@ public class CommonPerson implements Person {
 
         int digito2 = total%11;
 
-        if(!String.valueOf(digito1).equals(cpf.substring(9)) && String.valueOf(digito1).equals(cpf.substring(10))){
+        String x = cpf.substring(9,10);
+        String y = cpf.substring(10,11);
+
+        if(!String.valueOf(digito1).equals(cpf.substring(9,10)) && String.valueOf(digito2).equals(cpf.substring(10,11))){
             throw new Exception("Cpf is invalid, please verify this information");
         }
 
