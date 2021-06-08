@@ -30,7 +30,7 @@ public class PersonTests {
 
     @Test
     public void testValidCpf() throws Exception{
-        Person person = new CommonPerson("Chico", "07799679093","123456789", 30);
+        Person person = new CommonPerson("Chico", "31480623024","123456789", 30);
         person.isCpfValid(person.getCpf());
     }
 

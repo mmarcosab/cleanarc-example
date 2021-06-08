@@ -12,7 +12,8 @@ public class CommonPerson implements Person {
     public CommonPerson() {
     }
 
-    public CommonPerson(String name, String cpf, String rg, int age) {
+    public CommonPerson(String name, String cpf, String rg, int age) throws Exception {
+        isCpfValid(cpf);
         this.name = name;
         this.cpf = cpf;
         this.rg = rg;
@@ -82,8 +83,7 @@ public class CommonPerson implements Person {
         total += Integer.valueOf(cpf.substring(7, 8)) * 3;
         total += Integer.valueOf(cpf.substring(8, 9)) * 2;
 
-        //peguei o primeiro digito
-        int digito1 = total%10;
+        int digito1 = (11 - total%11) < 2 ? 0: 11 - total%11;
 
         total = 0;
 
@@ -98,16 +98,12 @@ public class CommonPerson implements Person {
         total += Integer.valueOf(cpf.substring(8,9)) * 3;
         total += Integer.valueOf(cpf.substring(9,10)) * 2;
 
-        int digito2 = total%11;
+        int digito2 = (11 - total%11) < 2 ? 0: 11 - total%11;
 
-        String x = cpf.substring(9,10);
-        String y = cpf.substring(10,11);
-
-        if(!String.valueOf(digito1).equals(cpf.substring(9,10)) && String.valueOf(digito2).equals(cpf.substring(10,11))){
+        if(!String.valueOf(digito1).equals(cpf.substring(9,10)) && !String.valueOf(digito2).equals(cpf.substring(10,11))){
             throw new Exception("Cpf is invalid, please verify this information");
         }
 
     }
-
 
 }

@@ -1,6 +1,6 @@
 package br.com.application.cleanarcexample.domain.entities;
 
-//here we define the business rules
+
 public interface Person {
     String getName();
     String getCpf();
