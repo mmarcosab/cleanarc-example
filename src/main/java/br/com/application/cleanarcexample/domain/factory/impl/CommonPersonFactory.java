@@ -8,7 +8,7 @@ import br.com.application.cleanarcexample.domain.factory.PersonFactory;
 public class CommonPersonFactory implements PersonFactory {
 
     @Override
-    public Person create(String name, String cpf, String rg, int age) {
+    public Person create(String name, String cpf, String rg, int age) throws Exception {
         return new CommonPerson(name, cpf, rg, age);
     }
 

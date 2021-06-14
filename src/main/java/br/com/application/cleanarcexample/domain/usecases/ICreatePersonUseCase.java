@@ -4,6 +4,6 @@ import br.com.application.cleanarcexample.adapters.controllers.model.request.Per
 import br.com.application.cleanarcexample.adapters.controllers.model.response.PersonResponseModel;
 
 
-public interface InputPersonUseCase {
-    PersonResponseModel create(PersonRequestModel requestModel) throws Exception;
+public interface ICreatePersonUseCase {
+    PersonResponseModel create(PersonRequestModel requestModel);
 }

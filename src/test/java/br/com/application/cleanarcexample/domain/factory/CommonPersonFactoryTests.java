@@ -9,16 +9,27 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 public class CommonPersonFactoryTests {
 
     @Test
-    public void test(){
+    public void testCreatePersonOk() throws Exception {
 
         CommonPersonFactory commonPersonFactory = new CommonPersonFactory();
-        Person person = commonPersonFactory.create("Chico", "12345678910","123456789", 30);
+        Person person = commonPersonFactory.create("Chico", "35133524846","123456789", 30);
 
         assertSame("Chico", person.getName());
-        assertSame("12345678910", person.getCpf());
+        assertSame("35133524846", person.getCpf());
         assertSame("123456789", person.getRg());
         assertSame(30, person.getAge());
 
+    }
+
+    @Test
+    public void testCreatePersonNok() throws Exception {
+
+        try {
+            CommonPersonFactory commonPersonFactory = new CommonPersonFactory();
+            Person person = commonPersonFactory.create("Chico", "12365487485", "123456789", 30);
+        } catch (Exception e) {
+            assertSame("Cpf is invalid, please verify this information", e.getMessage());
+        }
     }
 
 

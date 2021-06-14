@@ -7,12 +7,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PersonTests {
 
     @Test
-    public void test(){
+    public void test() throws Exception {
 
-        Person person = new CommonPerson("Chico", "12345678910","123456789", 30);
+        Person person = new CommonPerson("Chico", "35133524846","123456789", 30);
 
         assertSame("Chico", person.getName());
-        assertSame("12345678910", person.getCpf());
+        assertSame("35133524846", person.getCpf());
         assertSame("123456789", person.getRg());
         assertSame(30, person.getAge());
 
@@ -20,9 +20,8 @@ public class PersonTests {
 
     @Test
     public void testInvalidCpf() throws Exception{
-        Person person = new CommonPerson("Chico", "12345678910","123456789", 30);
         try {
-            person.isCpfValid(person.getCpf());
+            Person person = new CommonPerson("Chico", "12345678910","123456789", 30);
         } catch (Exception e){
             assertSame("Cpf is invalid, please verify this information", e.getMessage());
         }
@@ -30,7 +29,7 @@ public class PersonTests {
 
     @Test
     public void testValidCpf() throws Exception{
-        Person person = new CommonPerson("Chico", "31480623024","123456789", 30);
+        Person person = new CommonPerson("Chico", "35133524846","123456789", 30);
         person.isCpfValid(person.getCpf());
     }
 
