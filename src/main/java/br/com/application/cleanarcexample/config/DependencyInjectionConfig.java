@@ -6,7 +6,7 @@ import br.com.application.cleanarcexample.adapters.gateway.database.repository.P
 import br.com.application.cleanarcexample.adapters.presenters.impl.PersonResponseFormatter;
 import br.com.application.cleanarcexample.domain.factory.PersonFactory;
 import br.com.application.cleanarcexample.domain.factory.impl.CommonPersonFactory;
-import br.com.application.cleanarcexample.domain.usecases.impl.CreatePersonUseCase;
+import br.com.application.cleanarcexample.domain.usecases.impl.UserRegisterInteractor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Configuration;
 public class DependencyInjectionConfig {
 
     @Bean
-    public CreatePersonUseCase createPersonUseCase(PersonGateway personGateway, PersonResponseFormatter personResponseFormatter, PersonFactory personFactory){
-        return new CreatePersonUseCase(personGateway, personResponseFormatter, personFactory);
+    public UserRegisterInteractor createPersonUseCase(PersonGateway personGateway, PersonResponseFormatter personResponseFormatter, PersonFactory personFactory){
+        return new UserRegisterInteractor(personGateway, personResponseFormatter, personFactory);
     }
 
     @Bean

@@ -3,18 +3,18 @@ package br.com.application.cleanarcexample.domain.usecases.impl;
 import br.com.application.cleanarcexample.adapters.controllers.model.request.PersonRequestModel;
 import br.com.application.cleanarcexample.adapters.controllers.model.response.PersonResponseModel;
 import br.com.application.cleanarcexample.adapters.gateway.PersonGateway;
-import br.com.application.cleanarcexample.adapters.presenters.IPersonPresenter;
+import br.com.application.cleanarcexample.adapters.presenters.PersonPresenter;
 import br.com.application.cleanarcexample.domain.entities.Person;
 import br.com.application.cleanarcexample.domain.factory.PersonFactory;
-import br.com.application.cleanarcexample.domain.usecases.ICreatePersonUseCase;
+import br.com.application.cleanarcexample.domain.usecases.InputPersonUseCase;
 
-public class CreatePersonUseCase implements ICreatePersonUseCase {
+public class UserRegisterInteractor implements InputPersonUseCase {
 
     private final PersonGateway personGateway;
-    private final IPersonPresenter personPresenter;
+    private final PersonPresenter personPresenter;
     private final PersonFactory personFactory;
 
-    public CreatePersonUseCase(PersonGateway personGateway, IPersonPresenter personPresenter, PersonFactory personFactory) {
+    public UserRegisterInteractor(PersonGateway personGateway, PersonPresenter personPresenter, PersonFactory personFactory) {
         this.personGateway = personGateway;
         this.personPresenter = personPresenter;
         this.personFactory = personFactory;

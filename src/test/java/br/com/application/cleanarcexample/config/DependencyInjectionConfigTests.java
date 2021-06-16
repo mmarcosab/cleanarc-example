@@ -4,7 +4,7 @@ import br.com.application.cleanarcexample.adapters.gateway.PersonGateway;
 import br.com.application.cleanarcexample.adapters.gateway.database.repository.Personrepository;
 import br.com.application.cleanarcexample.adapters.presenters.impl.PersonResponseFormatter;
 import br.com.application.cleanarcexample.domain.factory.PersonFactory;
-import br.com.application.cleanarcexample.domain.usecases.impl.CreatePersonUseCase;
+import br.com.application.cleanarcexample.domain.usecases.impl.UserRegisterInteractor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
@@ -29,7 +29,7 @@ public class DependencyInjectionConfigTests {
 
     @Test
     public void testCreatePersonUseCase(){
-        CreatePersonUseCase useCase = config.createPersonUseCase(personGateway, personResponseFormatter, personFactory);
+        UserRegisterInteractor useCase = config.createPersonUseCase(personGateway, personResponseFormatter, personFactory);
         assertTrue(useCase != null);
     }
 

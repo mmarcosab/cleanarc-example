@@ -3,10 +3,10 @@ package br.com.application.cleanarcexample.domain.usecases;
 import br.com.application.cleanarcexample.adapters.controllers.model.request.PersonRequestModel;
 import br.com.application.cleanarcexample.adapters.controllers.model.response.PersonResponseModel;
 import br.com.application.cleanarcexample.adapters.gateway.PersonGateway;
-import br.com.application.cleanarcexample.adapters.presenters.IPersonPresenter;
+import br.com.application.cleanarcexample.adapters.presenters.PersonPresenter;
 import br.com.application.cleanarcexample.domain.entities.impl.CommonPerson;
 import br.com.application.cleanarcexample.domain.factory.PersonFactory;
-import br.com.application.cleanarcexample.domain.usecases.impl.CreatePersonUseCase;
+import br.com.application.cleanarcexample.domain.usecases.impl.UserRegisterInteractor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,17 +18,17 @@ import static org.mockito.Mockito.*;
 
 public class CreatePersonUseCaseTests {
 
-    private CreatePersonUseCase createPersonUseCase;
+    private UserRegisterInteractor createPersonUseCase;
     private PersonGateway personGateway;
-    private IPersonPresenter personPresenter;
+    private PersonPresenter personPresenter;
     private PersonFactory personFactory;
 
     @BeforeEach
     public void init(){
         personGateway = mock(PersonGateway.class);
-        personPresenter = mock(IPersonPresenter.class);
+        personPresenter = mock(PersonPresenter.class);
         personFactory = mock(PersonFactory.class);
-        createPersonUseCase = new CreatePersonUseCase(personGateway, personPresenter, personFactory);
+        createPersonUseCase = new UserRegisterInteractor(personGateway, personPresenter, personFactory);
     }
 
     @Test

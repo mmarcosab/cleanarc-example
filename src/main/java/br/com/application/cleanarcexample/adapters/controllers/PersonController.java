@@ -1,7 +1,7 @@
 package br.com.application.cleanarcexample.adapters.controllers;
 
 import br.com.application.cleanarcexample.adapters.controllers.model.request.PersonRequestModel;
-import br.com.application.cleanarcexample.domain.usecases.ICreatePersonUseCase;
+import br.com.application.cleanarcexample.domain.usecases.InputPersonUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 @RequiredArgsConstructor
 public class PersonController {
 
-    private final ICreatePersonUseCase personUseCase;
+    private final InputPersonUseCase personUseCase;
 
     @PostMapping
     public ResponseEntity create(@RequestBody PersonRequestModel personRequestModel){

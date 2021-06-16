@@ -2,7 +2,7 @@ package br.com.application.cleanarcexample.adapters.controllers;
 
 import br.com.application.cleanarcexample.adapters.controllers.model.request.PersonRequestModel;
 import br.com.application.cleanarcexample.adapters.controllers.model.response.PersonResponseModel;
-import br.com.application.cleanarcexample.domain.usecases.ICreatePersonUseCase;
+import br.com.application.cleanarcexample.domain.usecases.InputPersonUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
@@ -15,11 +15,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PersonControllerTests {
 
     private PersonController personController;
-    private ICreatePersonUseCase personUseCase;
+    private InputPersonUseCase personUseCase;
 
     @BeforeEach
     public void init(){
-        personUseCase = mock(ICreatePersonUseCase.class);
+        personUseCase = mock(InputPersonUseCase.class);
         personController = new PersonController(personUseCase);
     }
 
