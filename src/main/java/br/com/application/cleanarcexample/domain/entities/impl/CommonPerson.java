@@ -2,22 +2,27 @@ package br.com.application.cleanarcexample.domain.entities.impl;
 
 import br.com.application.cleanarcexample.domain.entities.Person;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CommonPerson implements Person {
 
     private String name;
-    private String cpf;
+    private Cpf cpf;
     private String rg;
     private int age;
+    private List<Telefone> telefones;
+
 
     public CommonPerson() {
     }
 
     public CommonPerson(String name, String cpf, String rg, int age) throws Exception {
-        isCpfValid(cpf);
         this.name = name;
-        this.cpf = cpf;
+        this.cpf = new Cpf(cpf);
         this.rg = rg;
         this.age = age;
+        telefones = new ArrayList<>();
     }
 
     public String getName() {
@@ -33,15 +38,14 @@ public class CommonPerson implements Person {
     }
 
     public String getCpf() {
-        return cpf;
+        return cpf.getNumero();
     }
 
     public void setCpf(String cpf) throws Exception {
         if (cpf.isEmpty() || cpf.isBlank()) {
             throw new Exception("The cpf can not be blank or empty");
         } else {
-            isCpfValid(cpf);
-            this.cpf = cpf;
+            this.cpf = new Cpf(cpf);
         }
     }
 
@@ -69,41 +73,11 @@ public class CommonPerson implements Person {
         }
     }
 
-    public void isCpfValid(String cpf) throws Exception {
-
-        int total = 0;
-
-        total += Integer.valueOf(cpf.substring(0, 1)) * 10;
-        total += Integer.valueOf(cpf.substring(1, 2)) * 9;
-        total += Integer.valueOf(cpf.substring(2, 3)) * 8;
-        total += Integer.valueOf(cpf.substring(3, 4)) * 7;
-        total += Integer.valueOf(cpf.substring(4, 5)) * 6;
-        total += Integer.valueOf(cpf.substring(5, 6)) * 5;
-        total += Integer.valueOf(cpf.substring(6, 7)) * 4;
-        total += Integer.valueOf(cpf.substring(7, 8)) * 3;
-        total += Integer.valueOf(cpf.substring(8, 9)) * 2;
-
-        int digito1 = (11 - total%11) < 2 ? 0: 11 - total%11;
-
-        total = 0;
-
-        total += Integer.valueOf(cpf.substring(0,1)) * 11;
-        total += Integer.valueOf(cpf.substring(1,2)) * 10;
-        total += Integer.valueOf(cpf.substring(2,3)) * 9;
-        total += Integer.valueOf(cpf.substring(3,4)) * 8;
-        total += Integer.valueOf(cpf.substring(4,5)) * 7;
-        total += Integer.valueOf(cpf.substring(5,6)) * 6;
-        total += Integer.valueOf(cpf.substring(6,7)) * 5;
-        total += Integer.valueOf(cpf.substring(7,8)) * 4;
-        total += Integer.valueOf(cpf.substring(8,9)) * 3;
-        total += Integer.valueOf(cpf.substring(9,10)) * 2;
-
-        int digito2 = (11 - total%11) < 2 ? 0: 11 - total%11;
-
-        if(!String.valueOf(digito1).equals(cpf.substring(9,10)) && !String.valueOf(digito2).equals(cpf.substring(10,11))){
-            throw new Exception("Cpf is invalid, please verify this information");
+    public void adicionarTelefone(String ddd, String numero) throws Exception {
+        if(telefones.size() >= 2){
+            throw new Exception("Numero maximo de telefones permitido já atingido");
         }
-
+        telefones.add(new Telefone(ddd, numero));
     }
 
 }

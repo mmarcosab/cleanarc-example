@@ -1,6 +1,7 @@
 package br.com.application.cleanarcexample.domain.entities;
 
 import br.com.application.cleanarcexample.domain.entities.impl.CommonPerson;
+import br.com.application.cleanarcexample.domain.entities.impl.Cpf;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,7 +31,6 @@ public class PersonTests {
     @Test
     public void testValidCpf() throws Exception{
         Person person = new CommonPerson("Chico", "35133524846","123456789", 30);
-        person.isCpfValid(person.getCpf());
     }
 
     @Test
@@ -134,6 +134,21 @@ public class PersonTests {
         Person person = new CommonPerson();
         ((CommonPerson) person).setAge(25);
         assertSame(25, person.getAge());
+    }
+
+
+    @Test
+    public void testCadastroTelefoneComSucesso() throws Exception {
+        Person person = new CommonPerson("Jose", "64842282053", "1236547814", 25);
+        assertDoesNotThrow(() -> person.adicionarTelefone("011", "123456587"));
+    }
+
+    @Test
+    public void testCadastroTelefoneComFalha() throws Exception {
+        Person person = new CommonPerson("Jose", "64842282053", "1236547814", 25);
+        person.adicionarTelefone("011", "123456587");
+        person.adicionarTelefone("011", "123456587");
+        assertThrows(Exception.class, () -> person.adicionarTelefone("011", "123456587"));
     }
 
 }

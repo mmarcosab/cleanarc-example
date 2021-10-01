@@ -6,5 +6,5 @@ public interface Person {
     String getCpf();
     String getRg();
     int getAge();
-    void isCpfValid(String cpf) throws Exception;
+    void adicionarTelefone(String ddd, String numero) throws Exception;
 }
